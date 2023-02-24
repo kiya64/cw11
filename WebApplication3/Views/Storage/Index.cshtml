@@ -1,0 +1,103 @@
+﻿@using WebApplication3.Enum;
+@model List<Commodity>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">  </h1>
+    <table class="table ">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">نام محصول</th>
+                <th scope="col">رنگ</th>
+                <th scope="col"> موجودی</th>
+                <th scope="col"> برند</th>
+                <th scope="col"> سریال </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (item.Model == ModelEnum.Mobile)
+                {
+                    
+                
+                <tr>
+
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Color</td>
+                    @if (item.Number != null)
+                    {
+                        <td>@item.Number</td>
+                    }
+                    else{
+                        <td>ناموجود</td>
+
+                    }
+                    <td>@item.Brand</td>
+                    <td>@item.Serial</td>
+
+                    <td><a class="btn btn-warning " asp-controller="Storage" asp-action="delCom" asp-route-Id="@item.Id"> حذف</a></td>
+                    <td><a class="btn btn-warning " asp-controller="Storage" asp-action="UpCom" asp-route-Id="@item.Id"> آپدیت</a></td>
+                </tr>
+            }
+            }
+
+
+        </tbody>
+
+    </table>
+    <br />
+    <table class="table ">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">نام محصول</th>
+                <th scope="col">رنگ</th>
+                <th scope="col"> موجودی</th>
+                <th scope="col"> برند</th>
+                <th scope="col"> سریال </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (item.Model == ModelEnum.Laptop)
+                {
+
+
+                    <tr>
+
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Color</td>
+                        @if (item.Number != null)
+                        {
+                            <td>@item.Number</td>
+                        }
+                        else
+                        {
+                            <td>ناموجود</td>
+
+                        }
+                        <td>@item.Brand</td>
+                        <td>@item.Serial</td>
+
+                        <td><a class="btn btn-warning " asp-controller="Storage" asp-action="delCom" asp-route-Id="@item.Id"> حذف</a></td>
+                        <td><a class="btn btn-warning " asp-controller="Storage" asp-action="UpCom" asp-route-Id="@item.Id"> آپدیت</a></td>
+                    </tr>
+                }
+            }
+
+
+        </tbody>
+
+    </table>
+
+    <a class="btn btn-dark" asp-controller="Storage" asp-action="AddCom">افزودن</a>
+</div>

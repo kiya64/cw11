@@ -1,0 +1,53 @@
+﻿@using WebApplication3.Enum;
+@model WebApplication3.Models.Commodity
+
+@{
+    ViewData["Title"] = "AddCom";
+}
+
+<h1>AddCom</h1>
+
+<h4>Commodity</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UpCom">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Color" class="control-label"></label>
+                <input asp-for="Color" class="form-control" />
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Model" class="control-label"></label>
+                <select asp-for="Model" asp-items="Html.GetEnumSelectList<ModelEnum>()" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Brand" class="control-label"></label>
+                <select asp-for="Brand" asp-items="Html.GetEnumSelectList<BrandEnum>()" class="form-control"></select>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Number" class="control-label"></label>
+                <input asp-for="Number" class="form-control" />
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="up" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
