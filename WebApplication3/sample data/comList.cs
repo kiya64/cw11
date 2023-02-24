@@ -1,10 +1,14 @@
-﻿using WebApplication3.Enum;
+﻿using Microsoft.VisualBasic;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using WebApplication3.Enum;
 using WebApplication3.Models;
 
 namespace WebApplication3.sample_data
 {
     public class comList
     {
+        public static string path = @"E:\file\db.txt";
         public static List<Commodity> commodities = new List<Commodity>
         { new Commodity {Id=1,Name="A52s",Color="red",Brand=BrandEnum.samsung,Model=ModelEnum.Mobile,Number=5,Serial="awffQAW" },
              new Commodity {Id=2,Name="p4",Color="black",Brand=BrandEnum.ho,Model=ModelEnum.Mobile ,Number=6, Serial="awADW"},
@@ -14,5 +18,12 @@ namespace WebApplication3.sample_data
                 new Commodity {Id=1,Name="Rog",Color="black",Brand=BrandEnum.Asus,Model=ModelEnum.Laptop, Number=0,Serial="praaqw"}
 
         };
+        public static void DTAdd(string name ,string type)
+        {
+           
+            
+            File.AppendAllText(path,"\n"+name +","+TIME.shamsi.prs(DateTime.Now)+","+type);
+        }
+
     }
 }

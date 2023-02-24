@@ -19,6 +19,7 @@ namespace WebApplication3.Repository
 
                 commodity.Id = sample_data.comList.commodities.Last().Id + 1;
                 comList.commodities.Add(commodity);
+                sample_data.comList.DTAdd(commodity.Name,"input");
 
             }
         }
@@ -34,7 +35,9 @@ namespace WebApplication3.Repository
             var com = comList.commodities.FirstOrDefault(x => x.Id == id);
             if (com.Number <= 1)
             {
+                sample_data.comList.DTAdd(com.Name, "output");
                 comList.commodities.Remove(com);
+
             }
             else
             {
